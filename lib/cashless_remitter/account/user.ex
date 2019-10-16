@@ -17,6 +17,7 @@ defmodule CashlessRemitter.Account.User do
     user
     |> cast(attrs, [:name, :email, :phone_number, :order_count, :pin])
     |> validate_required([:name, :email, :phone_number, :order_count, :pin])
+    |> validate_format(:email, ~r/.+@.+\..+/, message: "Your email is invalid")
     |> unique_constraint(:email)
   end
 end
