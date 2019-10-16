@@ -11,12 +11,14 @@ defmodule CashlessRemitterWeb.MerchantView do
   end
 
   def render("merchant.json", %{merchant: merchant}) do
-    %{id: merchant.id,
+    %{
+      id: merchant.id,
       name: merchant.name,
       logo: merchant.logo,
       description: merchant.description,
       phone: merchant.phone,
       opening: merchant.opening,
-      closing: merchant.closing}
+      closing: merchant.closing
+    }
   end
 end

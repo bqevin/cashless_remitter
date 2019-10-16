@@ -11,11 +11,13 @@ defmodule CashlessRemitterWeb.UserView do
   end
 
   def render("user.json", %{user: user}) do
-    %{id: user.id,
+    %{
+      id: user.id,
       name: user.name,
       email: user.email,
       phone_number: user.phone_number,
       order_count: user.order_count,
-      pin: user.pin}
+      pin: user.pin
+    }
   end
 end

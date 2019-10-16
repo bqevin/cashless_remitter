@@ -2,13 +2,12 @@ defmodule CashlessRemitter.Account.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "users" do
-    field :email, :string
-    field :name, :string
-    field :order_count, :integer
-    field :phone_number, :string
-    field :pin, :integer
+    field(:email, :string)
+    field(:name, :string)
+    field(:order_count, :integer)
+    field(:phone_number, :string)
+    field(:pin, :integer)
 
     timestamps()
   end

@@ -2,14 +2,13 @@ defmodule CashlessRemitter.Vendor.Merchant do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "merchants" do
-    field :closing, :time
-    field :description, :string
-    field :logo, :string
-    field :name, :string
-    field :opening, :time
-    field :phone, :string
+    field(:closing, :time)
+    field(:description, :string)
+    field(:logo, :string)
+    field(:name, :string)
+    field(:opening, :time)
+    field(:phone, :string)
 
     timestamps()
   end

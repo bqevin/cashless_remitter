@@ -11,7 +11,7 @@ defmodule CashlessRemitter.Application do
       # Start the Ecto repository
       supervisor(CashlessRemitter.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(CashlessRemitterWeb.Endpoint, []),
+      supervisor(CashlessRemitterWeb.Endpoint, [])
       # Start your own worker by calling: CashlessRemitter.Worker.start_link(arg1, arg2, arg3)
       # worker(CashlessRemitter.Worker, [arg1, arg2, arg3]),
     ]

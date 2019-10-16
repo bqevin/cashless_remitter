@@ -4,7 +4,7 @@ defmodule CashlessRemitterWeb.MerchantController do
   alias CashlessRemitter.Vendor
   alias CashlessRemitter.Vendor.Merchant
 
-  action_fallback CashlessRemitterWeb.FallbackController
+  action_fallback(CashlessRemitterWeb.FallbackController)
 
   def index(conn, _params) do
     merchants = Vendor.list_merchants()
@@ -35,6 +35,7 @@ defmodule CashlessRemitterWeb.MerchantController do
 
   def delete(conn, %{"id" => id}) do
     merchant = Vendor.get_merchant!(id)
+
     with {:ok, %Merchant{}} <- Vendor.delete_merchant(merchant) do
       send_resp(conn, :no_content, "")
     end

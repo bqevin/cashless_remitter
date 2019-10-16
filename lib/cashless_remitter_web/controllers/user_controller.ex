@@ -4,7 +4,7 @@ defmodule CashlessRemitterWeb.UserController do
   alias CashlessRemitter.Account
   alias CashlessRemitter.Account.User
 
-  action_fallback CashlessRemitterWeb.FallbackController
+  action_fallback(CashlessRemitterWeb.FallbackController)
 
   def index(conn, _params) do
     users = Account.list_users()
@@ -35,6 +35,7 @@ defmodule CashlessRemitterWeb.UserController do
 
   def delete(conn, %{"id" => id}) do
     user = Account.get_user!(id)
+
     with {:ok, %User{}} <- Account.delete_user(user) do
       send_resp(conn, :no_content, "")
     end
