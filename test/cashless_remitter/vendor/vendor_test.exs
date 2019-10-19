@@ -6,9 +6,30 @@ defmodule CashlessRemitter.VendorTest do
   describe "merchants" do
     alias CashlessRemitter.Vendor.Merchant
 
-    @valid_attrs %{closing: ~T[14:00:00.000000], description: "some description", logo: "some logo", name: "some name", opening: ~T[14:00:00.000000], phone: "some phone"}
-    @update_attrs %{closing: ~T[15:01:01.000000], description: "some updated description", logo: "some updated logo", name: "some updated name", opening: ~T[15:01:01.000000], phone: "some updated phone"}
-    @invalid_attrs %{closing: nil, description: nil, logo: nil, name: nil, opening: nil, phone: nil}
+    @valid_attrs %{
+      closing_time: ~T[14:00:00.000000],
+      description: "some description",
+      logo: "http://some.logo",
+      name: "some name",
+      opening_time: ~T[14:00:00.000000],
+      phone: "+256752235498"
+    }
+    @update_attrs %{
+      closing_time: ~T[15:01:01.000000],
+      description: "some updated description",
+      logo: "http://some.update.logo",
+      name: "some updated name",
+      opening_time: ~T[15:01:01.000000],
+      phone: "+254724778017"
+    }
+    @invalid_attrs %{
+      closing_time: nil,
+      description: nil,
+      logo: nil,
+      name: nil,
+      opening_time: nil,
+      phone: nil
+    }
 
     def merchant_fixture(attrs \\ %{}) do
       {:ok, merchant} =
@@ -31,12 +52,12 @@ defmodule CashlessRemitter.VendorTest do
 
     test "create_merchant/1 with valid data creates a merchant" do
       assert {:ok, %Merchant{} = merchant} = Vendor.create_merchant(@valid_attrs)
-      assert merchant.closing == ~T[14:00:00.000000]
+      assert merchant.closing_time == ~T[14:00:00.000000]
       assert merchant.description == "some description"
-      assert merchant.logo == "some logo"
+      assert merchant.logo == "http://some.logo"
       assert merchant.name == "some name"
-      assert merchant.opening == ~T[14:00:00.000000]
-      assert merchant.phone == "some phone"
+      assert merchant.opening_time == ~T[14:00:00.000000]
+      assert merchant.phone == "+256752235498"
     end
 
     test "create_merchant/1 with invalid data returns error changeset" do
@@ -47,12 +68,12 @@ defmodule CashlessRemitter.VendorTest do
       merchant = merchant_fixture()
       assert {:ok, merchant} = Vendor.update_merchant(merchant, @update_attrs)
       assert %Merchant{} = merchant
-      assert merchant.closing == ~T[15:01:01.000000]
+      assert merchant.closing_time == ~T[15:01:01.000000]
       assert merchant.description == "some updated description"
-      assert merchant.logo == "some updated logo"
+      assert merchant.logo == "http://some.update.logo"
       assert merchant.name == "some updated name"
-      assert merchant.opening == ~T[15:01:01.000000]
-      assert merchant.phone == "some updated phone"
+      assert merchant.opening_time == ~T[15:01:01.000000]
+      assert merchant.phone == "+254724778017"
     end
 
     test "update_merchant/2 with invalid data returns error changeset" do

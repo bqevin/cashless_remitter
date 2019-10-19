@@ -6,8 +6,20 @@ defmodule CashlessRemitter.AccountTest do
   describe "users" do
     alias CashlessRemitter.Account.User
 
-    @valid_attrs %{email: "some email", name: "some name", order_count: 42, phone_number: "some phone_number", pin: 42}
-    @update_attrs %{email: "some updated email", name: "some updated name", order_count: 43, phone_number: "some updated phone_number", pin: 43}
+    @valid_attrs %{
+      email: "user@test.com",
+      name: "some name",
+      order_count: 42,
+      phone_number: "+256752235498",
+      pin: 0000
+    }
+    @update_attrs %{
+      email: "user2@test.com",
+      name: "some updated name",
+      order_count: 43,
+      phone_number: "+254724778017",
+      pin: 1111
+    }
     @invalid_attrs %{email: nil, name: nil, order_count: nil, phone_number: nil, pin: nil}
 
     def user_fixture(attrs \\ %{}) do
@@ -31,11 +43,11 @@ defmodule CashlessRemitter.AccountTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Account.create_user(@valid_attrs)
-      assert user.email == "some email"
+      assert user.email == "user@test.com"
       assert user.name == "some name"
       assert user.order_count == 42
-      assert user.phone_number == "some phone_number"
-      assert user.pin == 42
+      assert user.phone_number == "+256752235498"
+      assert user.pin == 0000
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -46,11 +58,11 @@ defmodule CashlessRemitter.AccountTest do
       user = user_fixture()
       assert {:ok, user} = Account.update_user(user, @update_attrs)
       assert %User{} = user
-      assert user.email == "some updated email"
+      assert user.email == "user2@test.com"
       assert user.name == "some updated name"
       assert user.order_count == 43
-      assert user.phone_number == "some updated phone_number"
-      assert user.pin == 43
+      assert user.phone_number == "+254724778017"
+      assert user.pin == 1111
     end
 
     test "update_user/2 with invalid data returns error changeset" do
