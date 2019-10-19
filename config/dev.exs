@@ -36,5 +36,11 @@ config :logger, :console, format: "[$level] $message\n"
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
 
-
-  import_config "dev.secret.exs"
+# Configure your database
+config :cashless_remitter, CashlessRemitter.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "cashless_remitter",
+  password: "password",
+  database: "cashless_remitter",
+  hostname: "localhost",
+  pool_size: 10
