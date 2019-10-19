@@ -3,11 +3,11 @@ defmodule CashlessRemitter.Vendor.Merchant do
   import Ecto.Changeset
 
   schema "merchants" do
-    field(:closing, :time)
+    field(:closing_time, :time)
     field(:description, :string)
     field(:logo, :string)
     field(:name, :string)
-    field(:opening, :time)
+    field(:opening_time, :time)
     field(:phone, :string)
 
     timestamps()
@@ -16,7 +16,7 @@ defmodule CashlessRemitter.Vendor.Merchant do
   @doc false
   def changeset(merchant, attrs) do
     merchant
-    |> cast(attrs, [:name, :logo, :description, :phone, :opening, :closing])
-    |> validate_required([:name, :logo, :description, :phone, :opening, :closing])
+    |> cast(attrs, [:name, :logo, :description, :phone, :opening_time, :closing_time])
+    |> validate_required([:name, :logo, :description, :phone, :opening_time, :closing_time])
   end
 end

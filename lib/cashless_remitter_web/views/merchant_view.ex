@@ -17,8 +17,8 @@ defmodule CashlessRemitterWeb.MerchantView do
       logo: merchant.logo,
       description: merchant.description,
       phone: merchant.phone,
-      opening: merchant.opening,
-      closing: merchant.closing
+      opening_time: merchant.opening_time,
+      closing_time: merchant.closing_time
     }
   end
 end
