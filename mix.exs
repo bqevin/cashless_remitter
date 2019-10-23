@@ -20,6 +20,7 @@ defmodule CashlessRemitter.Mixfile do
   def application do
     [
       mod: {CashlessRemitter.Application, []},
+      env: [credentials: []],
       extra_applications: [:logger, :runtime_tools]
     ]
   end
